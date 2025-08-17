@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <head>
     <title>Create Post</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Create New Post</h1>

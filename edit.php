@@ -8,21 +8,17 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// The rest of your existing PHP code for creating a post follows here...
-// For example:
-// include 'db.php';
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') { ... }
-?>
-
-<!-- The rest of your HTML form follows here... -->
-<?php
+// Include the database connection file
 include 'db.php';
+
+// Get the post ID from the URL and fetch the post
 $id = $_GET['id'];
 $stmt = $conn->prepare("SELECT * FROM posts WHERE id = :id");
 $stmt->bindParam(':id', $id);
 $stmt->execute();
 $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
+// Handle form submission for updating the post
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -35,19 +31,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Edit Post</title>
+    <!-- Link to the stylesheet for improved UI -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Edit Post</h1>
-    <form method="POST">
-        <label>Title:</label><br>
-        <input type="text" name="title" value="<?= htmlspecialchars($post['title']) ?>" required><br><br>
-        <label>Content:</label><br>
-        <textarea name="content" required><?= htmlspecialchars($post['content']) ?></textarea><br><br>
-        <button type="submit">Update Post</button>
-    </form>
+    <div class="container">
+        <h1>Edit Post</h1>
+        <form method="POST">
+            <label>Title:</label><br>
+            <input type="text" name="title" value="<?= htmlspecialchars($post['title']) ?>" required><br><br>
+            <label>Content:</label><br>
+            <textarea name="content" required><?= htmlspecialchars($post['content']) ?></textarea><br><br>
+            <button type="submit">Update Post</button>
+        </form>
+    </div>
 </body>
 </html>
