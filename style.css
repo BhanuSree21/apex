@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0f7fa; /* Light blue background */
     margin: 0;
     padding: 20px;
 }
@@ -8,93 +8,123 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #b3e5fc; /* Accent border */
+    padding-bottom: 15px;
 }
 
-h1, h2 {
-    color: #343a40;
+.header h1 {
+    margin: 0;
+    color: #01579b; /* Dark blue heading */
 }
 
 .auth-links a,
 .post-actions a,
 .pagination a {
     text-decoration: none;
-    color: #007bff;
+    color: #0277bd; /* Bright blue links */
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .auth-links a:hover,
 .post-actions a:hover,
 .pagination a:hover {
+    color: #004d73;
     text-decoration: underline;
 }
 
 .search-form {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
 .search-form input,
 input[type="text"],
 input[type="password"],
 textarea {
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid #b3e5fc;
+    border-radius: 8px;
     font-size: 16px;
+    width: 100%;
 }
 
 .search-form button,
 button {
-    padding: 10px 15px;
-    background-color: #28a745;
+    padding: 12px 20px;
+    background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .search-form button:hover,
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 .post {
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e1f5fe;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.post h2 {
+    color: #01579b;
+    margin-top: 0;
+}
+
+.post p {
+    color: #455a64;
+    line-height: 1.6;
 }
 
 .post-actions {
-    margin-top: 10px;
-}
-
-.post-actions a {
-    margin-right: 15px;
+    margin-top: 15px;
 }
 
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #b3e5fc;
 }
 
 .pagination a {
-    padding: 8px 12px;
+    padding: 10px 15px;
     margin: 0 5px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    border: 1px solid #b3e5fc;
+    border-radius: 6px;
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
 }
+
+.pagination a:hover {
+    background-color: #bbdefb;
+}
+
+/* Optional: Add a class for active page */
+.pagination a.active {
+    background-color: #0288d1;
+    color: white;
+    border-color: #0288d1;
+}
+

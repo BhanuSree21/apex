@@ -8,7 +8,7 @@ include 'db.php';
 // Check if a user is logged in
 $is_logged_in = isset($_SESSION['user_id']);
 
-// --- Step 1 & 2: Implement Search & Pagination Logic ---
+// --- Implement Search & Pagination Logic ---
 
 // Pagination and search variables
 $posts_per_page = 5;
@@ -98,7 +98,6 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endfor; ?>
             </div>
         <?php endif; ?>
-
     </div>
 </body>
 </html>
