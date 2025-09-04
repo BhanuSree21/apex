@@ -1,13 +1,10 @@
 <?php
 // Start a new session.
 session_start();
-
-// Include the database connection file.
 include 'db.php';
 
-// Check if the form was submitted using the POST method.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
+    $username = trim($_POST['username']);
     $password = $_POST['password'];
 
     // Server-side validation
@@ -24,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($stmt->rowCount() > 0) {
             $error = "Username already exists.";
         } else {
-            // Hash the password securely before storing it in the database.
+            // Hash the password and assign a default role
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $role = 'user';
             
@@ -35,21 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindParam(':role', $role);
             $stmt->execute();
 
-            // Redirect to the login page after successful registration.
             header('Location: login.php');
             exit();
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <!-- Link to the stylesheet for consistent styling -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>

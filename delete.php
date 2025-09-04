@@ -1,22 +1,13 @@
 <?php
-// Start the session
 session_start();
+include 'db.php';
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+// Check if the user is logged in AND if their role is 'admin'
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    echo "You do not have permission to delete posts.";
     exit();
 }
 
-// The rest of your existing PHP code for creating a post follows here...
-// For example:
-// include 'db.php';
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') { ... }
-?>
-
-<!-- The rest of your HTML form follows here... -->
-<?php
-include 'db.php';
 $id = $_GET['id'];
 $stmt = $conn->prepare("DELETE FROM posts WHERE id = :id");
 $stmt->bindParam(':id', $id);
