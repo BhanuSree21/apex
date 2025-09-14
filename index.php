@@ -10,17 +10,15 @@ $is_logged_in = isset($_SESSION['user_id']);
 
 // --- Implement Search & Pagination Logic ---
 
-// Pagination and search variables
+// Pagination variables
 $posts_per_page = 5;
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($current_page - 1) * $posts_per_page;
 
-// Initialize the search query
+// Search variables
 $search_query = "";
 if (isset($_GET['search']) && !empty($_GET['search'])) {
-    // Add wildcards to the search term
     $search_term = '%' . $_GET['search'] . '%';
-    // Modify the SQL query to search in both title and content
     $search_query = "WHERE title LIKE :search_term OR content LIKE :search_term";
 }
 
@@ -48,7 +46,6 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <!-- Link to the stylesheet for improved UI -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
